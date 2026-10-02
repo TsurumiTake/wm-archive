@@ -1,49 +1,79 @@
 import { useEffect, useState, type CSSProperties, type FormEvent } from "react";
 import type { LetterMessage } from "../../types/content";
+import { supabase } from "../../lib/supabase";
 import { LanguageText } from "../ui/LanguageText";
 
-const STORAGE_KEY = "hana-alice-letter-messages";
+interface MessageRow {
+  id: number;
+  name: string | null;
+  content: string;
+  created_at: string;
+}
 
-function readMessages(): LetterMessage[] {
-  try {
-    const parsed = JSON.parse(window.localStorage.getItem(STORAGE_KEY) ?? "[]");
-    if (!Array.isArray(parsed)) return [];
-    return parsed
-      .filter((item): item is LetterMessage => {
-        if (!item || typeof item !== "object") return false;
-        return typeof item.id === "string" && typeof item.message === "string";
-      })
-      .slice(0, 16);
-  } catch {
-    return [];
-  }
+const TABLE_NAME = "messages";
+
+function mapMessage(row: MessageRow): LetterMessage {
+  return {
+    id: String(row.id),
+    message: row.content,
+    nickname: row.name?.trim() || "匿名"
+  };
 }
 
 export function MessageWall() {
-  const [messages, setMessages] = useState<LetterMessage[]>(readMessages);
+  const [messages, setMessages] = useState<LetterMessage[]>([]);
   const [message, setMessage] = useState("");
   const [nickname, setNickname] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
-  }, [messages]);
+    let cancelled = false;
+
+    const loadMessages = async () => {
+      const { data, error } = await supabase
+        .from(TABLE_NAME)
+        .select("id,name,content,created_at")
+        .order("created_at", { ascending: false })
+        .limit(16);
+
+      if (cancelled || error || !data) return;
+      setMessages((data as MessageRow[]).map(mapMessage));
+    };
+
+    void loadMessages();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const trimmedMessage = message.trim();
-  const canSubmit = trimmedMessage.length >= 1 && trimmedMessage.length <= 500;
+  const canSubmit = trimmedMessage.length >= 1 && trimmedMessage.length <= 500 && !submitting;
 
-  const submit = (event: FormEvent<HTMLFormElement>) => {
+  const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!canSubmit) return;
-    setMessages((current) => [
-      {
-        id: crypto.randomUUID(),
-        message: trimmedMessage,
-        nickname: nickname.trim() || "匿名"
-      },
-      ...current
-    ].slice(0, 16));
+
+    setSubmitting(true);
+
+    const { data, error } = await supabase
+      .from(TABLE_NAME)
+      .insert({
+        name: nickname.trim() || "匿名",
+        content: trimmedMessage
+      })
+      .select("id,name,content,created_at")
+      .single();
+
+    if (error || !data) {
+      setSubmitting(false);
+      return;
+    }
+
+    setMessages((current) => [mapMessage(data as MessageRow), ...current].slice(0, 16));
     setMessage("");
     setNickname("");
+    setSubmitting(false);
   };
 
   return (
@@ -53,7 +83,7 @@ export function MessageWall() {
           <p className="eyebrow"><LanguageText text="LETTER · 留言" /></p>
           <h2>如果有什么想留下的话</h2>
           <p>
-            看完这些照片之后，可以把想说的话写在这里。当前没有登录和数据库，留言只保存在你自己的浏览器里。
+            看完这些照片之后，可以把想说的话写在这里。留言会保存在公共留言墙中。
           </p>
           <form className="message-wall__form" onSubmit={submit}>
             <label htmlFor="letter-nickname">昵称（可选）</label>

@@ -10,6 +10,7 @@
     "typecheck": "tsc -b --pretty false"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.117.2",
     "noto-serif-sc": "^31.0.0",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
