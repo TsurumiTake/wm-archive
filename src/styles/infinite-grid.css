@@ -1,0 +1,166 @@
+/* Infinite Layers Grid interaction, adapted for the current project. */
+.infinite-moments-section {
+  position: relative;
+  padding-block: clamp(4.5rem, 8vw, 8rem) 0;
+  overflow: hidden;
+  background: var(--paper);
+}
+
+.infinite-moments__toolbar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.infinite-moments__toolbar h2 {
+  margin: 0;
+  font-family: var(--font-english), var(--serif);
+  font-size: clamp(2.8rem, 5.3vw, 5.1rem);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+}
+
+.infinite-moments__actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--text-soft);
+  font-family: var(--font-english), var(--font-chinese);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+}
+
+.infinite-moments__actions button {
+  min-height: 44px;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--line-strong);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  font-family: var(--font-english), var(--font-chinese);
+  font-size: 0.62rem;
+  letter-spacing: 0.09em;
+}
+
+.infinite-moments__viewport {
+  position: relative;
+  width: 100%;
+  height: clamp(590px, 78svh, 900px);
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 18% 24%, rgba(139, 175, 192, 0.16), transparent 28rem),
+    radial-gradient(circle at 82% 70%, rgba(183, 207, 197, 0.24), transparent 30rem),
+    var(--paper);
+  cursor: grab;
+  outline: none;
+  touch-action: none;
+  user-select: none;
+}
+
+.infinite-moments__viewport::before {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  content: "";
+  opacity: 0.24;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");
+  mix-blend-mode: soft-light;
+}
+
+.infinite-moments__viewport:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: -4px;
+}
+
+.infinite-moments__viewport.is-dragging {
+  cursor: grabbing;
+}
+
+.infinite-moments__space {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.infinite-grid-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  will-change: transform;
+  transition: opacity 900ms var(--ease);
+}
+
+.infinite-moments__viewport.is-ready .infinite-grid-item {
+  opacity: 1;
+}
+
+.infinite-grid-item__wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.infinite-grid-item__image {
+  position: relative;
+  z-index: 4;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 7px;
+  border: 1px solid rgba(37, 37, 37, 0.16);
+  background: #fffdf8;
+  box-shadow: 0 12px 30px rgba(37, 37, 37, 0.1);
+  cursor: zoom-in;
+  transition: transform 480ms var(--ease), box-shadow 480ms ease, border-color 250ms ease;
+}
+
+.infinite-grid-item__image .asset-image {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  border-radius: 0;
+}
+
+.infinite-grid-item__image:hover,
+.infinite-grid-item__image:focus-visible {
+  border-color: rgba(43, 153, 196, 0.5);
+  box-shadow: 0 24px 55px rgba(37, 37, 37, 0.16);
+  transform: translateY(-5px) rotate(-0.25deg);
+}
+
+.infinite-moments__note {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .infinite-moments__toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .infinite-moments__actions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .infinite-moments__viewport {
+    height: 68svh;
+    min-height: 500px;
+  }
+
+  .infinite-grid-item__image {
+    padding: 5px;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .infinite-grid-item,
+  .infinite-grid-item__image {
+    transition: none;
+  }
+}

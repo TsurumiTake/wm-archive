@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hana-alice.vercel.app/sitemap.xml
+

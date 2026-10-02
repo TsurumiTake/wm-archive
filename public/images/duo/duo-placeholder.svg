@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" role="img" aria-label="Woni and Minami duo image placeholder">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2b99c4"/>
+      <stop offset=".5" stop-color="#178b87"/>
+      <stop offset="1" stop-color="#006e4e"/>
+    </linearGradient>
+    <pattern id="lines" width="60" height="60" patternUnits="userSpaceOnUse" patternTransform="rotate(22)">
+      <line x1="0" y1="0" x2="0" y2="60" stroke="#f5faf9" stroke-opacity=".1" stroke-width="2"/>
+    </pattern>
+  </defs>
+  <rect width="1400" height="900" fill="url(#bg)"/>
+  <rect width="1400" height="900" fill="url(#lines)"/>
+  <circle cx="480" cy="450" r="250" fill="#f5faf9" fill-opacity=".11"/>
+  <circle cx="880" cy="450" r="250" fill="#071b1d" fill-opacity=".14"/>
+  <path d="M480 230C345 230 250 350 250 490C250 650 370 760 520 760C650 760 750 675 775 550C705 645 590 680 500 626C407 570 383 461 433 373C450 342 468 308 480 230Z" fill="#f5faf9" fill-opacity=".25"/>
+  <path d="M880 230C1015 230 1110 350 1110 490C1110 650 990 760 840 760C710 760 610 675 585 550C655 645 770 680 860 626C953 570 977 461 927 373C910 342 892 308 880 230Z" fill="#071b1d" fill-opacity=".2"/>
+  <text x="70" y="105" fill="#f5faf9" font-family="Arial, sans-serif" font-size="22" letter-spacing="6">她们之间 / 合照占位</text>
+  <text x="70" y="795" fill="#f5faf9" font-family="Georgia, serif" font-size="72" letter-spacing="8">WONI × MINAMI</text>
+  <text x="70" y="842" fill="#f5faf9" fill-opacity=".86" font-family="Arial, sans-serif" font-size="18" letter-spacing="6">RESCENE · 视觉相册</text>
+</svg>

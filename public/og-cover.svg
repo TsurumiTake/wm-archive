@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="花与爱丽丝，WONI 与 MINAMI 的非官方粉丝相册">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#dcecf0"/>
+      <stop offset=".55" stop-color="#f5f0e7"/>
+      <stop offset="1" stop-color="#b7cfc5"/>
+    </linearGradient>
+    <linearGradient id="photo" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8bafc0"/>
+      <stop offset="1" stop-color="#006e4e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#sky)"/>
+  <circle cx="1030" cy="90" r="260" fill="#faf8f2" fill-opacity=".45"/>
+  <rect x="82" y="88" width="330" height="454" rx="3" fill="#faf8f2" transform="rotate(-3 82 88)"/>
+  <rect x="98" y="104" width="298" height="390" fill="url(#photo)" transform="rotate(-3 98 104)"/>
+  <rect x="468" y="118" width="250" height="344" rx="3" fill="#faf8f2" transform="rotate(2 468 118)"/>
+  <rect x="486" y="136" width="214" height="274" fill="#d8a7a8" fill-opacity=".78" transform="rotate(2 486 136)"/>
+  <text x="760" y="250" fill="#252525" font-family="serif" font-size="80">花与爱丽丝</text>
+  <text x="764" y="330" fill="#006e4e" font-family="Georgia, serif" font-size="34" letter-spacing="5">WONI × MINAMI</text>
+  <text x="764" y="382" fill="#716c64" font-family="Arial, sans-serif" font-size="18" letter-spacing="3">她们之间的一些小事</text>
+  <text x="84" y="590" fill="#716c64" font-family="Arial, sans-serif" font-size="15" letter-spacing="4">HANA &amp; ALICE / W×M MOMENTS</text>
+</svg>

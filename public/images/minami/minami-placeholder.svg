@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" role="img" aria-label="MINAMI portrait placeholder">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#178b87"/>
+      <stop offset="1" stop-color="#006e4e"/>
+    </linearGradient>
+    <pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#f5faf9" fill-opacity=".2"/>
+    </pattern>
+  </defs>
+  <rect width="900" height="1200" fill="url(#bg)"/>
+  <rect width="900" height="1200" fill="url(#dots)"/>
+  <path d="M130 980V420C130 237 273 90 450 90C627 90 770 237 770 420V980" fill="#f5faf9" fill-opacity=".12" stroke="#f5faf9" stroke-opacity=".55" stroke-width="3"/>
+  <circle cx="450" cy="415" r="170" fill="#071b1d" fill-opacity=".18"/>
+  <path d="M292 740C330 610 570 610 608 740L660 980H240Z" fill="#071b1d" fill-opacity=".2"/>
+  <text x="70" y="110" fill="#f5faf9" font-family="Arial, sans-serif" font-size="24" letter-spacing="6">人物照片占位</text>
+  <text x="70" y="1070" fill="#f5faf9" font-family="Georgia, serif" font-size="72" letter-spacing="8">MINAMI</text>
+  <text x="70" y="1125" fill="#f5faf9" fill-opacity=".82" font-family="Arial, sans-serif" font-size="22" letter-spacing="4">伊藤南美</text>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1000" role="img" aria-label="舞台之后 placeholder image">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4b8f8d"/>
+      <stop offset="1" stop-color="#143d52"/>
+    </linearGradient>
+    <pattern id="grid" width="70" height="70" patternUnits="userSpaceOnUse">
+      <path d="M70 0H0V70" fill="none" stroke="#f5faf9" stroke-opacity=".09"/>
+    </pattern>
+  </defs>
+  <rect width="1400" height="1000" fill="url(#bg)"/>
+  <rect width="1400" height="1000" fill="url(#grid)"/>
+  <circle cx="1060" cy="260" r="270" fill="#f5faf9" fill-opacity=".1"/>
+  <path d="M0 790C260 675 490 830 740 710C940 614 1170 650 1400 540V1000H0Z" fill="#071b1d" fill-opacity=".28"/>
+  <rect x="110" y="150" width="420" height="520" rx="210" fill="none" stroke="#f5faf9" stroke-opacity=".42" stroke-width="3"/>
+  <text x="110" y="110" fill="#f5faf9" font-family="Arial, sans-serif" font-size="20" letter-spacing="6">MOMENT 004 / 幕后</text>
+  <text x="110" y="850" fill="#f5faf9" font-family="Georgia, serif" font-size="62" letter-spacing="4">舞台之后</text>
+  <text x="110" y="915" fill="#f5faf9" fill-opacity=".8" font-family="Arial, sans-serif" font-size="17" letter-spacing="5">本地图片占位 · 替换 images/moments 中的文件</text>
+</svg>
