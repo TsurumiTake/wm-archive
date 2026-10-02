@@ -48,7 +48,7 @@ export function MessageWall() {
   }, []);
 
   const trimmedMessage = message.trim();
-  const canSubmit = trimmedMessage.length >= 1 && trimmedMessage.length <= 500 && !submitting;
+  const canSubmit = trimmedMessage.length >= 1 && trimmedMessage.length <= 200 && !submitting;
 
   const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -91,24 +91,24 @@ export function MessageWall() {
               id="letter-nickname"
               type="text"
               value={nickname}
-              maxLength={30}
+              maxLength={20}
               placeholder="匿名"
-              onChange={(event) => setNickname(event.target.value)}
+              onChange={(event) => setNickname(event.target.value.slice(0, 20))}
             />
             <label htmlFor="letter-message">留言内容</label>
             <textarea
               id="letter-message"
               value={message}
               minLength={1}
-              maxLength={500}
+              maxLength={200}
               rows={5}
               required
               placeholder="写一点什么……"
-              onChange={(event) => setMessage(event.target.value.slice(0, 500))}
+              onChange={(event) => setMessage(event.target.value.slice(0, 200))}
             />
             <div className="message-wall__form-meta">
-              <span>1–500 字</span>
-              <span><LanguageText text={`${message.length} / 500`} /></span>
+              <span>1–200 字</span>
+              <span><LanguageText text={`${message.length} / 200`} /></span>
             </div>
             <button className="button button--solid" type="submit" disabled={!canSubmit}>
               留 下 来 <span aria-hidden="true">→</span>
